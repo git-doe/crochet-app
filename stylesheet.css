@@ -1,0 +1,515 @@
+.outfit {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: auto;
+  font-style: normal;
+}
+
+.pt-serif-regular {
+  font-family: "PT Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.pt-serif-bold {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.pt-serif-regular-italic {
+  font-family: "PT Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.pt-serif-bold-italic {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+/* Overlay Container */
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fdf6ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* Spinner Wrapper & Rotation */
+.cat-loader {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  animation: cat-spin 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+/* Cat Head Base Shape */
+.cat-head {
+  width: 100px;
+  height: 90px;
+  background-color: #ff9f43; /* Orange Tabby */
+  border-radius: 50% 50% 45% 45%;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+/* Triangular Ears via Clip-Path */
+.ear {
+  width: 32px;
+  height: 35px;
+  background-color: #ff9f43;
+  position: absolute;
+  top: 12px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.ear-left {
+  left: 14px;
+  transform: rotate(-15deg);
+}
+
+.ear-right {
+  right: 14px;
+  transform: rotate(15deg);
+}
+
+/* Ears Inner Pink Triangle */
+.ear::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 20px;
+  background-color: #ffb8b8;
+  bottom: 0;
+  left: 7px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Eyes */
+.eye {
+  width: 14px;
+  height: 14px;
+  background-color: #2d3436;
+  border-radius: 50%;
+  position: absolute;
+  top: 35px;
+}
+
+.eye-left { left: 24px; }
+.eye-right { right: 24px; }
+
+/* Nose */
+.nose {
+  width: 10px;
+  height: 8px;
+  background-color: #ffb8b8;
+  position: absolute;
+  top: 52px;
+  left: 45px;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
+/* Whiskers */
+.whiskers {
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: #2d3436;
+  top: 56px;
+}
+
+.whiskers.left {
+  left: -8px;
+  box-shadow: 0 -6px 0 #2d3436, 0 6px 0 #2d3436;
+  transform: rotate(5deg);
+}
+
+.whiskers.right {
+  right: -8px;
+  box-shadow: 0 -6px 0 #2d3436, 0 6px 0 #2d3436;
+  transform: rotate(-5deg);
+}
+
+/* Spinning Animation */
+@keyframes cat-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.15);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Fade out state */
+#loader-wrapper.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Overlay Container */
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fdf6ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* Spinner Wrapper & Rotation */
+.cat-loader {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  animation: cat-spin 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+/* Cat Head Base Shape */
+.cat-head {
+  width: 100px;
+  height: 90px;
+  background-color: #ff9f43; /* Orange Tabby */
+  border-radius: 50% 50% 45% 45%;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+/* Triangular Ears via Clip-Path */
+.ear {
+  width: 32px;
+  height: 35px;
+  background-color: #ff9f43;
+  position: absolute;
+  top: 12px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.ear-left {
+  left: 14px;
+  transform: rotate(-15deg);
+}
+
+.ear-right {
+  right: 14px;
+  transform: rotate(15deg);
+}
+
+/* Ears Inner Pink Triangle */
+.ear::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 20px;
+  background-color: #ffb8b8;
+  bottom: 0;
+  left: 7px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Eyes */
+.eye {
+  width: 14px;
+  height: 14px;
+  background-color: #2d3436;
+  border-radius: 50%;
+  position: absolute;
+  top: 35px;
+}
+
+.eye-left { left: 24px; }
+.eye-right { right: 24px; }
+
+/* Nose */
+.nose {
+  width: 10px;
+  height: 8px;
+  background-color: #ffb8b8;
+  position: absolute;
+  top: 52px;
+  left: 45px;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
+/* Whiskers */
+.whiskers {
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: #2d3436;
+  top: 56px;
+}
+
+.whiskers.left {
+  left: -8px;
+  box-shadow: 0 -6px 0 #2d3436, 0 6px 0 #2d3436;
+  transform: rotate(5deg);
+}
+
+.whiskers.right {
+  right: -8px;
+  box-shadow: 0 -6px 0 #2d3436, 0 6px 0 #2d3436;
+  transform: rotate(-5deg);
+}
+
+/* Spinning Animation */
+@keyframes cat-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.15);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Fade out state */
+#loader-wrapper.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+h1 h2 h3 h4 h5 h6 {
+    font-family: "PT Serif", serif;
+    font-weight: 400;
+}
+
+p {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: auto;
+    font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'PT Serif', serif;
+  background-color: #f9f6f0;
+  color: #333333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #7b5294;
+  margin-bottom: 2rem;
+}
+
+/* Container for navigation buttons */
+.welcome-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 380px;
+}
+
+/* Navigation Buttons styling */
+.welcome-btns button {
+  background-color: #ffffff;
+  border: 2px solid #7b5294;
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.welcome-btns button:hover {
+  background-color: #7b5294;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(123, 82, 148, 0.2);
+}
+
+.welcome-btns button a {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #7b5294;
+  text-decoration: none;
+  padding: 16px 20px;
+  width: 100%;
+  height: 100%;
+  transition: color 0.2s ease;
+}
+
+.welcome-btns button:hover a {
+  color: #ffffff;
+}
+
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f9f6f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Loader fade-out utility class */
+#loader-wrapper.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Cat Container */
+.cat-loader {
+  position: relative;
+  width: 100px;
+  height: 90px;
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Cat Ears */
+.ear {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid #7b5294;
+}
+
+.ear-left {
+  left: 10px;
+  transform: rotate(-15deg);
+}
+
+.ear-right {
+  right: 10px;
+  transform: rotate(15deg);
+}
+
+/* Cat Head Base */
+.cat-head {
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 70px;
+  background-color: #7b5294;
+  border-radius: 50px 50px 40px 40px;
+}
+
+/* Eyes */
+.eye {
+  position: absolute;
+  top: 25px;
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  animation: blink 3s infinite;
+}
+
+.eye-left {
+  left: 25px;
+}
+
+.eye-right {
+  right: 25px;
+}
+
+/* Nose */
+.nose {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #f9f6f0;
+}
+
+/* Whiskers */
+.whiskers {
+  position: absolute;
+  top: 40px;
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+}
+
+.whiskers.left {
+  left: -5px;
+  box-shadow: 0 -6px 0 #ffffff, 0 6px 0 #ffffff;
+  transform: rotate(5deg);
+}
+
+.whiskers.right {
+  right: -5px;
+  box-shadow: 0 -6px 0 #ffffff, 0 6px 0 #ffffff;
+  transform: rotate(-5deg);
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes blink {
+  0%, 90%, 100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  .welcome-btns button a {
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+}

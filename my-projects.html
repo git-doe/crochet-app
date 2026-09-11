@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Crochet Projects</title>
+  <style>
+    /* Shared Theme Styling */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f6f0;
+      color: #333;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 480px; /* Mobile-focused layout width */
+    }
+    h2 {
+      text-align: center;
+      color: #7b5294;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .input-group {
+      margin-bottom: 12px;
+    }
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: bold;
+      font-size: 0.85em;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95em;
+      font-family: inherit;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+    .row .input-group {
+      flex: 1;
+    }
+    button.btn-primary {
+      width: 100%;
+      background-color: #7b5294;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+      touch-action: manipulation;
+    }
+    button.btn-primary:hover {
+      background-color: #633e77;
+    }
+
+    /* Projects List Styles */
+    .project-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      border-left: 5px solid #7b5294;
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .project-title {
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #333;
+    }
+    .badge {
+      font-size: 0.75em;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .status-in-progress { background-color: #fff3cd; color: #856404; }
+    .status-completed { background-color: #d4edda; color: #155724; }
+    .status-planned { background-color: #e2e3e5; color: #383d41; }
+
+    .project-details {
+      font-size: 0.85em;
+      color: #555;
+      line-height: 1.5;
+    }
+    .project-details div {
+      margin-bottom: 3px;
+    }
+    .tutorial-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 12px;
+      background-color: #e8e1f0;
+      color: #7b5294;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.85em;
+      font-weight: bold;
+      word-break: break-all;
+    }
+    .tutorial-link:hover {
+      background-color: #d8cde3;
+    }
+    .project-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+    .btn-delete {
+      background: transparent;
+      border: none;
+      color: #d9534f;
+      font-size: 0.8em;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+    .empty-state {
+      text-align: center;
+      color: #888;
+      font-size: 0.9em;
+      padding: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>My Crochet Projects</h2>
+
+  <!-- Add New Project Form -->
+  <div class="card">
+    <div class="input-group">
+      <label for="projName">Project Name:</label>
+      <input type="text" id="projName" placeholder="e.g. Hexagon Cardigan, Scrunchie">
+    </div>
+
+    <div class="row">
+      <div class="input-group">
+        <label for="projStatus">Status:</label>
+        <select id="projStatus">
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+          <option value="Planned">Planned</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="projPrice">Price / Value ($):</label>
+        <input type="number" id="projPrice" step="0.01" placeholder="0.00">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-group">
+        <label for="projHook">Hook Size:</label>
+        <input type="text" id="projHook" placeholder="e.g. 5.0 mm (H-8)">
+      </div>
+      <div class="input-group">
+        <label for="projYarn">Yarn / Materials:</label>
+        <input type="text" id="projYarn" placeholder="e.g. Velvet yarn, polyfill">
+      </div>
+    </div>
+
+    <!-- Custom Field: Tutorial Link -->
+    <div class="input-group">
+      <label for="projLink">Tutorial / Pattern Link (URL):</label>
+      <input type="url" id="projLink" placeholder="https://youtube.com/...">
+    </div>
+
+    <!-- Custom Field: Notes -->
+    <div class="input-group">
+      <label for="projNotes">Pattern Notes / Modifications:</label>
+      <textarea id="projNotes" placeholder="e.g. Added 2 extra rows to sleeves..."></textarea>
+    </div>
+
+    <button class="btn-primary" onclick="addProject()">+ Add Project</button>
+  </div>
+
+  <!-- Projects List Container -->
+  <div id="projectsList">
+    <!-- JSON items render here -->
+  </div>
+</div>
+<script src="loading-screen.js"></script>
+<script>
+  // Storage key for local database
+  const STORAGE_KEY = 'crochet_projects_db';
+
+  // Load projects from local JSON storage or default array
+  function getProjects() {
+    const data = localStorage.getItem(STORAGE_KEY);
+    return data ? JSON.parse(data) : [];
+  }
+
+  // Save array back to local JSON storage
+  function saveProjects(projects) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+  }
+
+  // Add new project
+  function addProject() {
+    const nameInput = document.getElementById('projName');
+    const statusInput = document.getElementById('projStatus');
+    const priceInput = document.getElementById('projPrice');
+    const hookInput = document.getElementById('projHook');
+    const yarnInput = document.getElementById('projYarn');
+    const linkInput = document.getElementById('projLink');
+    const notesInput = document.getElementById('projNotes');
+
+    if (!nameInput.value.trim()) {
+      alert('Please enter a project name.');
+      return;
+    }
+
+    // Auto-fix URL formatting if user leaves off https://
+    let formattedLink = linkInput.value.trim();
+    if (formattedLink && !/^https?:\/\//i.test(formattedLink)) {
+      formattedLink = 'https://' + formattedLink;
+    }
+
+    const newProject = {
+      id: Date.now(),
+      name: nameInput.value.trim(),
+      status: statusInput.value,
+      price: parseFloat(priceInput.value) || 0,
+      hook: hookInput.value.trim() || 'N/A',
+      materials: yarnInput.value.trim() || 'N/A',
+      link: formattedLink,
+      notes: notesInput.value.trim(),
+      date: new Date().toLocaleDateString()
+    };
+
+    const projects = getProjects();
+    projects.unshift(newProject); // Add to top of list
+    saveProjects(projects);
+
+    // Clear form inputs
+    nameInput.value = '';
+    priceInput.value = '';
+    hookInput.value = '';
+    yarnInput.value = '';
+    linkInput.value = '';
+    notesInput.value = '';
+
+    renderProjects();
+  }
+
+  // Delete project
+  function deleteProject(id) {
+    let projects = getProjects();
+    projects = projects.filter(p => p.id !== id);
+    saveProjects(projects);
+    renderProjects();
+  }
+
+  // Render list from local database JSON
+  function renderProjects() {
+    const listContainer = document.getElementById('projectsList');
+    const projects = getProjects();
+
+    if (projects.length === 0) {
+      listContainer.innerHTML = '<div class="empty-state">No projects saved yet. Add one above!</div>';
+      return;
+    }
+
+    listContainer.innerHTML = projects.map(proj => {
+      let badgeClass = 'status-planned';
+      if (proj.status === 'In Progress') badgeClass = 'status-in-progress';
+      if (proj.status === 'Completed') badgeClass = 'status-completed';
+
+      return `
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">${escapeHtml(proj.name)}</span>
+            <span class="badge ${badgeClass}">${proj.status}</span>
+          </div>
+          <div class="project-details">
+            <div><strong>Hook Size:</strong> ${escapeHtml(proj.hook)}</div>
+            <div><strong>Materials:</strong> ${escapeHtml(proj.materials)}</div>
+            <div><strong>Value/Price:</strong> $${proj.price.toFixed(2)}</div>
+            ${proj.notes ? `<div><strong>Notes:</strong> ${escapeHtml(proj.notes)}</div>` : ''}
+            <div><strong>Added:</strong> ${proj.date}</div>
+          </div>
+
+          ${proj.link ? `
+            <a href="${escapeHtml(proj.link)}" target="_blank" rel="noopener noreferrer" class="tutorial-link">
+              📺 View Pattern / Tutorial
+            </a>
+          ` : ''}
+
+          <div class="project-actions">
+            <button class="btn-delete" onclick="deleteProject(${proj.id})">Delete</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Helper function to prevent XSS
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, function(m) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      }[m];
+    });
+  }
+
+  // Initial render on page load
+  renderProjects();
+</script>
+
+</body>
+</html>

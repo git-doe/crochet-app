@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Crochet App v2.0</title>
+        <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="calculator.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+        <link rel="shortcut icon" href="favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Crochet v2" />
+        <link rel="manifest" href="favicon/site.webmanifest" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <style>
+        body {
+              font-family: Arial, sans-serif;
+              background-color: #f9f6f0;
+              color: #333;
+              display: flex;
+              justify-content: center;
+              padding: 20px;
+            }
+            .calculator {
+              background: #ffffff;
+              padding: 25px;
+              border-radius: 12px;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+              width: 100%;
+              max-width: 400px;
+            }
+            h2 {
+              text-align: center;
+              color: #7b5294;
+              margin-top: 0;
+            }
+            .input-group {
+              margin-bottom: 15px;
+            }
+            label {
+              display: block;
+              margin-bottom: 5px;
+              font-weight: bold;
+              font-size: 0.9em;
+            }
+            input, select {
+              width: 100%;
+              padding: 8px;
+              border: 1px solid #ccc;
+              border-radius: 6px;
+              box-sizing: border-box;
+            }
+            button {
+              width: 100%;
+              background-color: #7b5294;
+              color: white;
+              border: none;
+              padding: 10px;
+              border-radius: 6px;
+              font-size: 1em;
+              cursor: pointer;
+              margin-top: 10px;
+            }
+            button:hover {
+              background-color: #633e77;
+            }
+            .results {
+              margin-top: 20px;
+              padding-top: 15px;
+              border-top: 2px dashed #eee;
+            }
+            .results p {
+              margin: 8px 0;
+              display: flex;
+              justify-content: space-between;
+            }
+            .final-price {
+              font-size: 1.2em;
+              font-weight: bold;
+              color: #2e7d32;
+            }
+        </style>
+    </head>
+    <body>
+            <!--loading screen -->
+        <div id="loader-wrapper">
+          <div class="cat-loader">
+              <!-- Cat Ears -->
+            <div class="ear ear-left"></div>
+            <div class="ear ear-right"></div>
+            
+                <!-- Cat Head Base -->
+            <div class="cat-head">
+                <!-- Eyes -->
+              <div class="eye eye-left"></div>
+              <div class="eye eye-right"></div>
+                <!-- Nose & Whiskers -->
+              <div class="nose"></div>
+              <div class="whiskers left"></div>
+              <div class="whiskers right"></div>
+            </div>
+          </div>
+        </div>
+            <!--main code -->
+        <div class="calculator">
+          <h2>Crochet Price Calculator</h2>
+          
+          <div class="input-group">
+            <label for="yarnCost">Yarn Used Cost ($):</label>
+            <input type="number" id="yarnCost" step="0.01" placeholder="e.g. 4.50" value="0">
+          </div>
+        
+          <div class="input-group">
+            <label for="extrasCost">Other Materials ($) (Stuffing, eyes, buttons):</label>
+            <input type="number" id="extrasCost" step="0.01" placeholder="e.g. 1.50" value="0">
+          </div>
+        
+          <div class="input-group">
+            <label for="hoursWorked">Hours Spent (Hours):</label>
+            <input type="number" id="hoursWorked" step="0.1" placeholder="e.g. 2.5" value="0">
+          </div>
+        
+          <div class="input-group">
+            <label for="hourlyRate">Desired Hourly Rate ($/hr):</label>
+            <input type="number" id="hourlyRate" step="0.50" placeholder="e.g. 15.00" value="15">
+          </div>
+        
+          <div class="input-group">
+            <label for="profitMargin">Profit Margin / Overhead (%):</label>
+            <select id="profitMargin">
+              <option value="0">0% (Break Even + Labor)</option>
+              <option value="10">10%</option>
+              <option value="20" selected>20% (Recommended)</option>
+              <option value="30">30%</option>
+              <option value="50">50%</option>
+            </select>
+          </div>
+        
+          <button onclick="calculatePrice()">Calculate Price</button>
+        
+          <div class="results">
+            <p><span>Total Material Cost:</span> <span id="outMaterials">$0.00</span></p>
+            <p><span>Total Labor Cost:</span> <span id="outLabor">$0.00</span></p>
+            <p><span>Profit Added:</span> <span id="outProfit">$0.00</span></p>
+            <p class="final-price"><span>Suggested Price:</span> <span id="outTotal">$0.00</span></p>
+          </div>
+        </div>
+            <!--SCRIPTS -->
+        <script src="loading-screen.js"></script>
+        <script src="calculator.js"></script>
+    </body>
+</html>
